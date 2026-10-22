@@ -34,6 +34,17 @@ node tests/game.test.cjs
 
 將 `dist/` 交給靜態 HTTP 服務即可執行。Sites 部署須保留既有 project_id；使用 Sites source workflow 推送、包裝後將精確 commit 與封裝送交部署，保留目前私密權限。
 
+## GitHub Pages 公開發布
+
+公開遊玩網址：https://bd-cs1.github.io/barrel-bound/
+
+- 儲存庫已公開，Pages 來源為 GitHub Actions。
+- `.github/workflows/pages.yml` 在 `main` 每次推送時自動執行；也可於 Actions → Publish GitHub Pages → Run workflow 手動啟動。
+- 流程先執行語法檢查與遊戲測試，再將 `dist/` 上傳並部署至 GitHub Pages；不需要 API 金鑰或額外套件。
+- 只公開 `dist/` 內的遊戲檔案；測試與部署說明保留在原始碼儲存庫。
+- 回復版本：將要回復的遊戲檔案以新提交還原至 `main`，讓同一流程重新部署。不要刪除 Git 歷史。
+- GitHub Pages 與 Sites 是獨立部署；GitHub 推送不會自動更新 Sites。
+
 ## 已知限制
 
 - 這是現代瀏覽器遊戲，沒有原生 App 安裝包、PWA 離線快取、遊戲手把或雲端排行榜。
